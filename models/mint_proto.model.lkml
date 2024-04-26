@@ -19,3 +19,5 @@ explore: posts {
 }
 
 explore: postscopy {}
+
+explore: sentiments_timeline{}

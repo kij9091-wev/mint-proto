@@ -57,6 +57,7 @@ view: sentiments_timeline {
     timeframes: [
       raw,
       time,
+      hour,
       date,
       week,
       month

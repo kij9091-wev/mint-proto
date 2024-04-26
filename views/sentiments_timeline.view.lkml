@@ -64,6 +64,11 @@ view: sentiments_timeline {
     ]
     sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
   }
+
+  measure: count {
+    type: count
+    drill_fields: [id]
+  }
   #
   # # Define your dimensions and measures here, like this:
   # dimension: user_id {

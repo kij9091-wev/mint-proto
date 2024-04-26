@@ -3,6 +3,12 @@ view: sentiments_timeline {
   # sql_table_name: my_schema_name.tester ;;
   sql_table_name: `mint_proto.posts` ;;
 
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
   dimension: date {
     type: date_time
     sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
@@ -29,6 +35,21 @@ view: sentiments_timeline {
       value: "NEGATIVE"
     }
     label: "Negative Sentiments"
+  }
+
+  dimension_group: _partitiondate {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONDATE ;;
+  }
+  dimension_group: _partitiontime {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}._PARTITIONTIME ;;
   }
   #
   # # Define your dimensions and measures here, like this:

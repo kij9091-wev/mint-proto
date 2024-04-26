@@ -51,6 +51,18 @@ view: sentiments_timeline {
     datatype: date
     sql: ${TABLE}._PARTITIONTIME ;;
   }
+
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month
+    ]
+    sql: ${TABLE}.date ;;
+  }
   #
   # # Define your dimensions and measures here, like this:
   # dimension: user_id {

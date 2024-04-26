@@ -61,7 +61,7 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: ${TABLE}.date ;;
+    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
   }
   #
   # # Define your dimensions and measures here, like this:

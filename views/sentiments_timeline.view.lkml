@@ -65,6 +65,23 @@ view: sentiments_timeline {
     sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
   }
 
+  dimension: message {
+    type: string
+    sql: ${TABLE}.message ;;
+  }
+  dimension: message_url {
+    type: string
+    sql: ${TABLE}.messageUrl ;;
+  }
+  dimension: source_url {
+    type: string
+    sql: ${TABLE}.sourceUrl ;;
+  }
+  dimension: subject {
+    type: string
+    sql: ${TABLE}.subject ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id]

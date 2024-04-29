@@ -42,7 +42,7 @@ view: sentiments_timeline {
 
   dimension_group: created {
     type: time
-    sql: ${TABLE}.creation_time AT TIME ZONE 'Asia/Seoul'
+    sql: ${TABLE}.creation_time
     timeframes: [
       raw,
       time,

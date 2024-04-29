@@ -10,7 +10,7 @@ datagroup: mint_proto_default_datagroup {
 
 persist_with: mint_proto_default_datagroup
 
-explore: entities {}
+# explore: entities {}
 
 explore: posts {
  query: posts_query {
@@ -23,5 +23,13 @@ explore: postscopy {}
 explore: sentiments {
   query: sentiments_query {
     limit: 100000
+  }
+}
+
+explore: entities {
+  join: posts {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${entities.message_url} = ${posts.message_url} ;;
   }
 }

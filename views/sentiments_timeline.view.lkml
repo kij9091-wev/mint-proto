@@ -50,19 +50,6 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creation_time / 1000000000 AS INT64)) ;;
-  }
-
-  dimension_group: created2 {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      hour,
-      date,
-      week,
-      month
-    ]
     sql: ${TABLE}.creation_time ;;
   }
 
@@ -82,7 +69,10 @@ view: sentiments_timeline {
     type: string
     sql: ${TABLE}.subject ;;
   }
-
+  dimension: text {
+    type: string
+    sql: ${TABLE}.text ;;
+  }
   measure: count {
     type: count
     drill_fields: [id]

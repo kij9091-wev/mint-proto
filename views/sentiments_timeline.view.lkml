@@ -11,7 +11,7 @@ view: sentiments_timeline {
 
   dimension: date {
     type: date_time
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
+    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creation_time / 1000000000 AS INT64)) ;;
   }
 
   dimension: sentiment {
@@ -37,21 +37,6 @@ view: sentiments_timeline {
     label: "Negative Sentiments"
   }
 
-  dimension_group: _partitiondate {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}._PARTITIONDATE ;;
-  }
-  dimension_group: _partitiontime {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}._PARTITIONTIME ;;
-  }
-
   dimension_group: created {
     type: time
     timeframes: [
@@ -62,7 +47,7 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creationtime / 1000000000 AS INT64)) ;;
+    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creation_time / 1000000000 AS INT64)) ;;
   }
 
   dimension: message {
@@ -71,11 +56,11 @@ view: sentiments_timeline {
   }
   dimension: message_url {
     type: string
-    sql: ${TABLE}.messageUrl ;;
+    sql: ${TABLE}.message_url ;;
   }
   dimension: source_url {
     type: string
-    sql: ${TABLE}.sourceUrl ;;
+    sql: ${TABLE}.source_url ;;
   }
   dimension: subject {
     type: string

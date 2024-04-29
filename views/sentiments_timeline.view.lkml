@@ -8,10 +8,13 @@ view: sentiments_timeline {
     type: number
     sql: ${TABLE}.id ;;
   }
-
+  dimension: creation_time {
+    type: number
+    sql: ${TABLE}.creation_time ;;
+  }
   dimension: date {
     type: date_time
-    sql: TIMESTAMP_SECONDS(CAST(${TABLE}.creation_time / 1000000000 AS INT64)) ;;
+    sql: TIMESTAMP_SECONDS(${TABLE}.creation_time) ;;
   }
 
   dimension: sentiment {

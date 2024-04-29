@@ -1,4 +1,4 @@
-view: sentiments_timeline {
+view: sentiments {
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   sql_table_name: `mint_proto.posts` ;;

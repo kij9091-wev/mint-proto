@@ -20,4 +20,8 @@ explore: posts {
 
 explore: postscopy {}
 
-explore: sentiments_timeline{}
+explore: sentiments {
+  query: sentiments_query {
+    limit: 100000
+  }
+}

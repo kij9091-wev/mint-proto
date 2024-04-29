@@ -19,6 +19,18 @@ view: posts {
     type: number
     sql: ${TABLE}.creation_time ;;
   }
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      hour,
+      date,
+      week,
+      month
+    ]
+    sql: ${TABLE}.creation_time;;
+  }
   dimension: message {
     type: string
     sql: ${TABLE}.message ;;

@@ -63,7 +63,7 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: TIMESTAMP_SECONDS(${TABLE}.creation_time) ;;
+    sql: ${TABLE}.creation_time ;;
   }
 
   dimension: message {

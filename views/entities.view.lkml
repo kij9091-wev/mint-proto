@@ -7,35 +7,35 @@ view: entities {
     type: string
     sql: ${TABLE}.id ;;
   }
-  dimension_group: _partitiondate {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}._PARTITIONDATE ;;
-  }
-  dimension_group: _partitiontime {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}._PARTITIONTIME ;;
-  }
+
   dimension: creation_time {
     type: number
-    sql: ${TABLE}.creationTime ;;
+    sql: ${TABLE}.creation_time ;;
   }
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      hour,
+      date,
+      week,
+      month
+    ]
+    sql: ${TABLE}.creation_time;;
+  }
+
   dimension: keyword {
     type: string
     sql: ${TABLE}.keyword ;;
   }
   dimension: message_url {
     type: string
-    sql: ${TABLE}.messageUrl ;;
+    sql: ${TABLE}.message_url ;;
   }
   dimension: source_url {
     type: string
-    sql: ${TABLE}.sourceUrl ;;
+    sql: ${TABLE}.source_url ;;
   }
   measure: count {
     type: count

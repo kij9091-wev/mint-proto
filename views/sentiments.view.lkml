@@ -40,6 +40,24 @@ view: sentiments {
     label: "Negative Sentiments"
   }
 
+  measure: count_mixed {
+    type: count
+    filters: {
+      field: sentiment
+      value: "MIXED"
+    }
+    label: "Mixed Sentiments"
+  }
+
+  measure: count_neutral {
+    type: count
+    filters: {
+      field: sentiment
+      value: "NEUTRAL"
+    }
+    label: "Neutral Sentiments"
+  }
+
   dimension_group: created {
     type: time
     timeframes: [

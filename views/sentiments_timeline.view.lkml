@@ -50,7 +50,8 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: ${TABLE}.creation_time ;;
+    sql: ${TABLE}.creation_time
+    convert_tz: "UTC", "Asia/Seoul";;
   }
 
   dimension: message {

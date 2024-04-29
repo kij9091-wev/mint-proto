@@ -42,6 +42,7 @@ view: sentiments_timeline {
 
   dimension_group: created {
     type: time
+    sql: ${TABLE}.creation_time
     timeframes: [
       raw,
       time,
@@ -50,8 +51,7 @@ view: sentiments_timeline {
       week,
       month
     ]
-    sql: ${TABLE}.creation_time
-    convert_tz: "UTC", "Asia/Seoul";;
+    convert_tz: "UTC", "Asia/Seoul"
   }
 
   dimension: message {

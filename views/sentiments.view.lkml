@@ -16,9 +16,12 @@ view: sentiments {
     type: date_time
     sql: TIMESTAMP_SECONDS(${TABLE}.creation_time) ;;
   }
-  dimension: utc_creation_time {
+  dimension: creation_time_kst {
     type: string
-    sql: CONVERT_TIMEZONE('UTC', 'Asia/Seoul', TIMESTAMP_SECONDS(${TABLE}.creation_time)) ;;
+    sql: FORMAT_TIMESTAMP('%F %T', TIMESTAMP_SECONDS(${TABLE}.creation_time), 'Asia/Seoul') ;;
+    description: "Creation time in Korea Standard Time"
+    # type: string
+    # sql: CONVERT_TIMEZONE('UTC', 'Asia/Seoul', TIMESTAMP_SECONDS(${TABLE}.creation_time)) ;;
     # 이 경우 your_timestamp_field는 유닉스 타임스탬프를 포함하는 필드 이름으로 변경하세요.
   }
 

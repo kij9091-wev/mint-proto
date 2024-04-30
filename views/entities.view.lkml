@@ -4,7 +4,7 @@ view: entities {
 
   dimension: id {
     primary_key: yes
-    type: string
+    type: number
     sql: ${TABLE}.id ;;
   }
 

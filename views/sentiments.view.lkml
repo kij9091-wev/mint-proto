@@ -62,7 +62,6 @@ view: sentiments {
     # datatype: timestamp
   }
 
-
   dimension: sentiment {
     type: string
     sql: ${TABLE}.sentiment ;;

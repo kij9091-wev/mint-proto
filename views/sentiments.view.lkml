@@ -56,7 +56,7 @@ view: sentiments {
       month
     ]
     # UTC에서 한국 시간으로 변환된 타임스탬프
-    sql: FORMAT_TIMESTAMP('%F %X', ${TABLE}.creation_time, 'Asia/Seoul') ;;
+    sql: FORMAT_TIMESTAMP('%F %T', ${TABLE}.creation_time, 'Asia/Seoul') ;;
     # sql: TIMESTAMP(FORMAT_TIMESTAMP('%F %T', TIMESTAMP_SECONDS(${TABLE}.creation_time), 'Asia/Seoul')) ;;
     # convert_tz: yes
     # datatype: timestamp

@@ -7,10 +7,6 @@ view: posts {
     type: number
     sql: ${TABLE}.id ;;
   }
-  dimension: __index_level_0__ {
-    type: number
-    sql: ${TABLE}.__index_level_0__ ;;
-  }
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;

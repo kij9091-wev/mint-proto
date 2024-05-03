@@ -22,8 +22,8 @@ view: entities {
     sql: ${TABLE}._PARTITIONTIME ;;
   }
   dimension: creation_time {
-    type: number
-    sql: ${TABLE}.creationTime ;;
+    type: date_time
+    sql: ${TABLE}.creation_time ;;
   }
   dimension: keyword {
     type: string
@@ -31,11 +31,11 @@ view: entities {
   }
   dimension: message_url {
     type: string
-    sql: ${TABLE}.messageUrl ;;
+    sql: ${TABLE}.message_url ;;
   }
   dimension: source_url {
     type: string
-    sql: ${TABLE}.sourceUrl ;;
+    sql: ${TABLE}.source_url ;;
   }
   measure: count {
     type: count

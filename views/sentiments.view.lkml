@@ -85,6 +85,10 @@ view: sentiments {
   }
   dimension: source_url {
     type: string
+    link: {
+      label: "해당 링크로 이동"
+      url:"{{ message_url }}"
+    }
     sql: ${TABLE}.source_url ;;
   }
   dimension: subject {

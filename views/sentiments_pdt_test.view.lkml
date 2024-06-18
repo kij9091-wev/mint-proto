@@ -1,9 +1,9 @@
 view: sentiments_pdt_test {
   derived_table: {
-    increment_key: "id"
+    increment_key: "entity_id"
     sql: SELECT
             e.*,
-            e.id,
+            e.id AS entity_id,
             p.message,
             p.sentiment,
             p.creation_time AS post_creation_time

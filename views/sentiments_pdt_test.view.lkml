@@ -13,12 +13,8 @@ view: sentiments_pdt_test {
             `mint_proto.posts` AS p
           ON
             e.message_url = p.message_url ;;
-    sql_trigger_value: SELECT MAX(updated_at) FROM etl_log ;;
-    # persist_for: "1 hour"
+    sql_trigger_value: SELECT MAX(updated_at) FROM mint_proto.entities ;;
     # datagroup_trigger: mint_proto_default_datagroup
+
   }
-
-
-
-
 }

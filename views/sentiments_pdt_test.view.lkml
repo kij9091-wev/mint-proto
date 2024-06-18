@@ -1,7 +1,6 @@
 view: sentiments_pdt_test {
   derived_table: {
-    increment_key: "event_hour"
-    increment_offset: 1
+    increment_key: "id"
     sql: SELECT
             e.*,
             p.id,
@@ -16,6 +15,10 @@ view: sentiments_pdt_test {
             e.message_url = p.message_url ;;
     sql_trigger_value: SELECT MAX(updated_at) FROM etl_log ;;
     # persist_for: "1 hour"
+    # datagroup_trigger: mint_proto_default_datagroup
   }
+
+
+
 
 }

@@ -33,3 +33,5 @@ explore: entities {
     sql_on: ${entities.message_url} = ${posts.message_url} ;;
   }
 }
+
+explore: sentiments_pdt_test {}

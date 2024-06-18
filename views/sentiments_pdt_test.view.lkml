@@ -3,7 +3,7 @@ view: sentiments_pdt_test {
     increment_key: "id"
     sql: SELECT
             e.*,
-            p.id,
+            e.id,
             p.message,
             p.sentiment,
             p.creation_time AS post_creation_time

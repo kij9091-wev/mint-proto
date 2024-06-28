@@ -93,8 +93,7 @@ view: _posts_entities_combined {
     sql: ${TABLE}.entity_id ;;
   }
   measure: entity_count {
-    type: number
-    sql: ${TABLE}.entity_id ;;
+    type: count
   }
 
   dimension: keyword {

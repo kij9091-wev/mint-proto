@@ -123,11 +123,6 @@ view: _posts_entities_combined {
     label: "Neutral Sentiments"
   }
 
-  # Overall Sentiment Score
-  measure: sentiment_score {
-    type: number
-    sql: (SUM(CASE WHEN ${TABLE}.sentiment = 'positive' THEN 1 WHEN ${TABLE}.sentiment = 'negative' THEN -1 ELSE 0 END)) / COUNT(*) ;;
-  }
   dimension: lesserafim_insta_filter {
     type: yesno
     sql: CASE

@@ -10,8 +10,9 @@ view: _posts_entities_combined {
             p.source_url,
             p.subject,
             p.text,
-            COUNT(e.id) AS entity_count,
-            GROUP_CONCAT(e.keyword) AS keywords
+            e.id AS entity_id,
+            e.keyword,
+            e.creation_time AS entity_creation_time
           FROM
             `mint_proto.posts` AS p
           LEFT JOIN
@@ -27,7 +28,10 @@ view: _posts_entities_combined {
             p.sentiment,
             p.source_url,
             p.subject,
-            p.text ;;
+            p.text,
+            e.id,
+            e.keyword,
+            e.creation_time;;
   }
 
   dimension: post_id {
@@ -79,25 +83,41 @@ view: _posts_entities_combined {
     type: string
     sql: ${TABLE}.text ;;
   }
-  dimension: entity_count {
-    type: number
-    sql: ${TABLE}.entity_count ;;
-  }
-  dimension: keywords {
-    type: string
-    sql: ${TABLE}.keywords ;;
-  }
   measure: post_count {
     type: count_distinct
     sql: ${TABLE}.post_id ;;
   }
+
+  dimension: entity_id {
+    type: number
+    sql: ${TABLE}.entity_id ;;
+  }
+  measure: entity_count {
+    type: number
+    sql: ${TABLE}.entity_id ;;
+  }
+
+  dimension: keyword {
+    type: string
+    sql: ${TABLE}.keyword ;;
+  }
+  dimension: entity_creation_time {
+    type: number
+    sql: ${TABLE}.entity_creation_time ;;
+  }
+
+  # Overall Sentiment Score
+  # measure: sentiment_score {
+  #   type: number
+  #   sql: (SUM(CASE WHEN ${TABLE}.sentiment = 'positive' THEN 1 WHEN ${TABLE}.sentiment = 'negative' THEN -1 ELSE 0 END)) / COUNT(*) ;;
+  # }
 
   # Sentiment Measures
   measure: count_positive {
     type: count
     filters: {
       field: sentiment
-      value: "positive"
+      value: "POSITIVE"
     }
     drill_fields: [sentiments.*]
     label: "Positive Sentiments"
@@ -107,7 +127,7 @@ view: _posts_entities_combined {
     type: count
     filters: {
       field: sentiment
-      value: "negative"
+      value: "NEGATIVE"
     }
     drill_fields: [sentiments.*]
     label: "Negative Sentiments"
@@ -117,12 +137,20 @@ view: _posts_entities_combined {
     type: count
     filters: {
       field: sentiment
-      value: "neutral"
+      value: "NEUTRAL"
     }
     drill_fields: [sentiments.*]
     label: "Neutral Sentiments"
   }
-
+  measure: count_mixed {
+    type: count
+    filters: {
+      field: sentiment
+      value: "MIXED"
+    }
+    drill_fields: [sentiments.*]
+    label: "Mixed Sentiments"
+  }
   dimension: lesserafim_insta_filter {
     type: yesno
     sql: CASE

@@ -35,8 +35,4 @@ explore: entities {
 }
 
 explore: sentiments_pdt_test {}
-explore: _posts_entities_combined {
-  query: posts_query {
-    limit: 100000
-  }
-}
+explore: _posts_entities_combined {}

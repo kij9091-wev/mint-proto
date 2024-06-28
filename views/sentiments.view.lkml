@@ -100,6 +100,20 @@ view: sentiments {
     type: string
     sql: ${TABLE}.text ;;
   }
+  dimension: lesserafim_insta__filter {
+    type: yesno
+    sql: CASE
+          WHEN ${TABLE}.text LIKE '%르세라핌%' AND ${TABLE}.text LIKE '%인스타%' THEN TRUE
+          ELSE FALSE
+        END ;;
+  }
+  dimension: lesserafim_weverse_filter {
+    type: yesno
+    sql: CASE
+          WHEN ${TABLE}.text LIKE '%르세라핌%' AND ${TABLE}.text LIKE '%위버스%' THEN TRUE
+          ELSE FALSE
+        END ;;
+  }
   measure: count {
     type: count
     drill_fields: [sentiments.*]

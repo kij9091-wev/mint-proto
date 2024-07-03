@@ -73,6 +73,11 @@ view: _posts_entities_combined {
   }
   dimension: source_url {
     type: string
+    link: {
+      label: "해당 링크로 이동"
+      url:"{{ message_url }}"
+      icon_url: "http://www.google.com/s2/favicons?domain=theqoo.net"
+    }
     sql: ${TABLE}.source_url ;;
   }
   dimension: subject {

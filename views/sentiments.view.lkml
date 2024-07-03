@@ -20,6 +20,11 @@ view: sentiments {
   dimension: sentiment {
     type: string
     sql: ${TABLE}.sentiment ;;
+    link: {
+      label: "View Dashboard"
+      url: "https://hybe.cloud.looker.com/dashboards/26"
+    }
+
   }
 
   measure: count_positive {
